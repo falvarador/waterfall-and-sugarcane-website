@@ -1,0 +1,40 @@
+---
+import StarRating from "./StarRating.astro";
+
+export interface Props {
+    quote: string;
+    name: string;
+    avatar: string;
+    initials: string;
+}
+
+const { quote, name, avatar, initials } = Astro.props;
+---
+
+<div
+    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full"
+>
+    <div class="text-4xl text-yellow-400 font-serif -ml-2 mb-4">”</div>
+    <p class="text-gray-600 mb-6 flex-grow">“{quote}”</p>
+
+    <div class="flex items-center mt-auto">
+        {
+            avatar ? (
+                <img
+                    src={avatar}
+                    alt={name}
+                    class="w-12 h-12 rounded-full mr-4 object-cover"
+                />
+            ) : (
+                <div class="w-12 h-12 rounded-full mr-4 bg-brand-green text-white flex items-center justify-center font-bold text-xl">
+                    {initials}
+                </div>
+            )
+        }
+
+        <div>
+            <p class="font-bold text-brand-text">{name}</p>
+            <StarRating rating={5} />
+        </div>
+    </div>
+</div>

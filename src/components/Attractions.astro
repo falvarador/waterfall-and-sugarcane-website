@@ -1,0 +1,74 @@
+---
+import AttractionCard from "./AttractionCard.astro";
+
+
+import IconRenderer, { Icon } from "../utilities/IconRenderer.astro";
+
+interface AttractionDataItem {
+    image: string;
+    icon: Icon;
+    title: string;
+    description: string;
+    timeline: string;
+}
+
+const data: AttractionDataItem[] = [
+    {
+        image: "https://picsum.photos/400/300?image=1043",
+        icon: Icon.Hiking,
+        title: "Nuevas Rutas de Senderismo",
+        description:
+            "Explora la selva como nunca antes con nuestras nuevas rutas guiadas. Descubre cascadas escondidas y vistas panorámicas que te dejarán sin aliento.",
+        timeline: "Próximamente: Verano 2025",
+    },
+    {
+        image: "https://picsum.photos/400/300?image=30",
+        icon: Icon.Tasting,
+        title: "Degustaciones Especiales",
+        description:
+            "Experimenta la versatilidad de la caña de azúcar con nuestras degustaciones de guarapo con infusiones de frutas exóticas locales. Una explosión de sabor en cada sorbo.",
+        timeline: "Próximamente: Otoño 2025",
+    },
+    {
+        image: "https://picsum.photos/400/300?image=1074",
+        icon: Icon.Recreation,
+        title: "Zona de Recreación",
+        description:
+            "Un espacio diseñado para la relajación y la diversión. Contaremos con áreas de picnic, hamacas junto al río y juegos para los más pequeños.",
+        timeline: "Próximamente: Invierno 2025",
+    },
+];
+
+const iconClasses = "h-7 w-7 text-brand-green";
+---
+
+<section id="atracciones" class="py-20 px-4">
+    <div class="container mx-auto text-center">
+        <h3 class="text-brand-green font-semibold tracking-widest">
+            PRÓXIMAMENTE
+        </h3>
+        <h2 class="text-4xl font-serif font-bold mt-2 mb-6 text-brand-text">
+            Atracciones y Actividades Futuras
+        </h2>
+        <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+            Siempre estamos soñando con nuevas formas de compartir nuestro amor
+            por la naturaleza. ¡Prepárate para lo que viene!
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+                data.map((item) => (
+                    <AttractionCard
+                        image={item.image}
+                        title={item.title}
+                        description={item.description}
+                        timeline={item.timeline}
+                    >
+                        <div slot="icon">
+                            <IconRenderer icon={item.icon} class={iconClasses} />
+                        </div>
+                    </AttractionCard>
+                ))
+            }
+        </div>
+    </div>
+</section>

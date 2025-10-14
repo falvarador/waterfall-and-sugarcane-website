@@ -1,0 +1,63 @@
+---
+import AboutCard from "./AboutCard.astro";
+
+import IconRenderer, { Icon } from "../utilities/IconRenderer.astro";
+
+interface AboutDataItem {
+    icon: Icon;
+    title: string;
+    description: string;
+}
+
+const data: AboutDataItem[] = [
+    {
+        icon: Icon.Family,
+        title: "Nuestras Raíces",
+        description:
+            "Nuestra historia comenzó hace generaciones con el sueño de cultivar la tierra. Este amor por la agricultura se ha transmitido de padres a hijos, manteniendo viva la tradición de la molienda de caña.",
+    },
+    {
+        icon: Icon.Leaf,
+        title: "Pasión por lo Natural",
+        description:
+            "Creemos en el poder de lo auténtico. Cada vaso de jugo de caña se elabora al momento, sin aditivos, capturando la esencia pura de la planta. Es nuestra forma de honrar la generosidad de la naturaleza.",
+    },
+    {
+        icon: Icon.Waterfall,
+        title: "Custodios de la Cascada",
+        description:
+            "Descubrimos este tesoro natural y nos sentimos llamados a protegerlo y compartirlo. La cascada es el corazón de nuestro paraíso, un lugar de paz y energía que nos inspira cada día.",
+    },
+];
+
+const iconClasses = "h-8 w-8 text-brand-green";
+---
+
+<section id="nosotros" class="py-20 px-4">
+    <div class="container mx-auto text-center">
+        <h3 class="text-brand-green font-semibold tracking-widest">
+            SOBRE NOSOTROS Y NUESTRA HISTORIA
+        </h3>
+        <h2 class="text-4xl font-serif font-bold mt-2 mb-6 text-brand-text">
+            Un Legado de Sabor y Naturaleza
+        </h2>
+        <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+            Somos más que un destino; somos una familia que comparte su amor por
+            la tierra, la tradición y la belleza natural que nos rodea.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {
+                data.map((item) => (
+                    <AboutCard
+                        title={item.title}
+                        description={item.description}
+                    >
+                        <div slot="icon">
+                            <IconRenderer icon={item.icon} class={iconClasses} />
+                        </div>
+                    </AboutCard>
+                ))
+            }
+        </div>
+    </div>
+</section>

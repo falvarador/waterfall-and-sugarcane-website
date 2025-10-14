@@ -1,0 +1,20 @@
+---
+import IconRenderer, { Icon } from '../utilities/IconRenderer.astro';
+
+export interface Props {
+    rating: number;
+}
+
+const { rating } = Astro.props;
+---
+
+<div class="flex space-x-1 text-brand-yellow">
+    {
+        [...Array(5)].map((_, i) => (
+            <IconRenderer
+                icon={Icon.Star}
+                class={`w-5 h-5 ${i < rating ? "text-brand-yellow" : "text-gray-300"}`}
+            />
+        ))
+    }
+</div>

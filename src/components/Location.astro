@@ -1,0 +1,69 @@
+---
+import LocationCard from "./LocationCard.astro";
+
+import IconRenderer, { Icon } from '../utilities/IconRenderer.astro';
+
+interface LocationDataItem {
+    icon: Icon;
+    iconClasses: string;
+    title: string;
+    description: string;
+}
+
+const data: LocationDataItem[] = [
+    {
+        icon: Icon.LocationPin,
+        iconClasses: "w-8 h-8 text-brand-green",
+        title: "Dirección Física",
+        description:
+            "Carretera al Pailón del Diablo, Km 5, Parroquia Río Verde, Baños de Agua Santa, Ecuador.",
+    },
+    {
+        icon: Icon.Directions,
+        iconClasses: "w-8 h-8 text-orange-500",
+        title: "Indicaciones Clave",
+        description:
+            "Desde Baños, toma la carretera hacia Puyo. Estamos a 20 minutos, justo después del puente. Busca nuestro letrero de madera a la derecha.",
+    },
+];
+---
+
+<section id="ubicación" class="py-20 px-4">
+    <div class="container mx-auto text-center">
+        <h3 class="text-brand-green font-semibold tracking-widest">
+            ENCUÉNTRANOS
+        </h3>
+        <h2 class="text-4xl font-serif font-bold mt-2 mb-6 text-brand-text">
+            Visítanos en nuestro paraíso
+        </h2>
+        <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+            Estamos ansiosos por darte la bienvenida. Aquí te mostramos cómo
+            llegar.
+        </p>
+
+        <div
+            class="w-full h-96 bg-gray-300 rounded-xl mb-12 shadow-md flex items-center justify-center"
+        >
+            <p class="text-gray-500">Mapa de Google Maps iría aquí</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {
+                data.map((item) => (
+                    <LocationCard
+                        title={item.title}
+                        description={item.description}
+                    >
+                        {/* 🌟 Usamos IconRenderer para inyectar el componente de Astro */}
+                        <div class="flex-shrink-0" slot="icon">
+                            <IconRenderer
+                                icon={item.icon}
+                                class={item.iconClasses}
+                            />
+                        </div>
+                    </LocationCard>
+                ))
+            }
+        </div>
+    </div>
+</section>

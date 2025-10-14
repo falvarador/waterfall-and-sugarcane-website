@@ -1,0 +1,51 @@
+---
+import TestimonialCard from "./TestimonialCard.astro";
+
+const testimonialsData = [
+    {
+        quote: "¡Una experiencia inolvidable! El jugo de caña era increíblemente fresco y delicioso, y la caminata a la cascada fue mágica. La atención de la familia fue muy cálida. ¡Volveremos!",
+        name: "Laura Campos",
+        avatar: "",
+        initials: "LC",
+    },
+    {
+        quote: "Un lugar perfecto para desconectar de la ciudad. El sonido de la cascada es muy relajante y el jugo de caña te recarga de energía. Se nota el amor que le ponen a este emprendimiento.",
+        name: "Carlos Mendoza",
+        avatar: "https://picsum.photos/100/100?random=1",
+        initials: "CM",
+    },
+    {
+        quote: "Es el mejor jugo de caña que he probado en mi vida. Ver cómo lo muelen al instante es un espectáculo. La cascada es impresionante. Un tesoro escondido que vale la pena visitar.",
+        name: "Ana Rodríguez",
+        avatar: "https://picsum.photos/100/100?random=2",
+        initials: "AR",
+    },
+];
+---
+
+<section id="testimonios" class="py-20 px-4 bg-white">
+    <div class="container mx-auto text-center">
+        <h3 class="text-brand-green font-semibold tracking-widest">
+            TESTIMONIOS
+        </h3>
+        <h2 class="text-4xl font-serif font-bold mt-2 mb-6 text-brand-text">
+            Lo que Nuestros Visitantes Dicen
+        </h2>
+        <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+            La experiencia de quienes nos visitan es nuestra mejor carta de
+            presentación. Sus palabras nos inspiran a seguir mejorando.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+                testimonialsData.map((item) => (
+                    <TestimonialCard
+                        quote={item.quote}
+                        name={item.name}
+                        avatar={item.avatar}
+                        initials={item.initials}
+                    />
+                ))
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,101 @@
+---
+import CalendarIcon from "../components/icons/CalendarIcon.astro";
+import DirectionsIcon from "../components/icons/DirectionsIcon.astro";
+import FamilyIcon from "../components/icons/FamilyIcon.astro";
+import FacebookIcon from "../components/icons/FacebookIcon.astro";
+import HikingIcon from "../components/icons/HikingIcon.astro";
+import InstagramIcon from "../components/icons/InstagramIcon.astro";
+import LeafIcon from "../components/icons/LeafIcon.astro";
+import LocationPinIcon from "../components/icons/LocationPinIcon.astro";
+import MailIcon from "../components/icons/MailIcon.astro";
+import PhoneIcon from "../components/icons/PhoneIcon.astro";
+import RecreationIcon from "../components/icons/RecreationIcon.astro";
+import StarIcon from "../components/icons/StarIcon.astro";
+import TastingIcon from "../components/icons/TastingIcon.astro";
+import TiktokIcon from "../components/icons/TiktokIcon.astro";
+import WaterfallIcon from "../components/icons/WaterfallIcon.astro";
+import WhatsappIcon from "../components/icons/WhatsappIcon.astro";
+
+export interface Props {
+    icon: Icon;
+    class: string;
+}
+
+export enum Icon {
+    Calendar = 'calendar',
+    Directions = 'directions',
+    Family = 'family',
+    Facebook = 'facebook',
+    Hiking = 'hiking',
+    Instagram = 'instagram',
+    Leaf = 'leaf',
+    LocationPin = 'location-pin',
+    Mail = 'mail',
+    Phone = 'phone',
+    Recreation = 'recreation',
+    Star = 'star',
+    Tasting = 'tasting',
+    Tiktok = 'tiktok',
+    Waterfall = 'waterfall',
+    Whatsapp = 'whatsapp'
+}
+
+const { icon: id, class: iconClasses } = Astro.props;
+
+let IconComponent = null;
+
+switch (id) {
+    case Icon.Calendar:
+        IconComponent = CalendarIcon;
+        break;
+    case Icon.Directions:
+        IconComponent = DirectionsIcon;
+        break;
+    case Icon.Family:
+        IconComponent = FamilyIcon;
+        break;
+    case Icon.Facebook:
+        IconComponent = FacebookIcon;
+        break;
+    case Icon.Hiking:
+        IconComponent = HikingIcon;
+        break;
+    case Icon.Instagram:
+        IconComponent = InstagramIcon;
+        break;
+    case Icon.Leaf:
+        IconComponent = LeafIcon;
+        break;
+    case Icon.LocationPin:
+        IconComponent = LocationPinIcon;
+        break;
+    case Icon.Mail:
+        IconComponent = MailIcon;
+        break;
+    case Icon.Phone:
+        IconComponent = PhoneIcon;
+        break;
+    case Icon.Recreation:
+        IconComponent = RecreationIcon;
+        break;
+    case Icon.Star:
+        IconComponent = StarIcon;
+        break;
+    case Icon.Tasting:
+        IconComponent = TastingIcon;
+        break;
+    case Icon.Tiktok:
+        IconComponent = TiktokIcon;
+        break;
+    case Icon.Waterfall:
+        IconComponent = WaterfallIcon;
+        break;
+    case Icon.Whatsapp:
+        IconComponent = WhatsappIcon;
+        break;
+    default:
+        break;
+}
+---
+
+{IconComponent ? <IconComponent class={iconClasses} /> : null}

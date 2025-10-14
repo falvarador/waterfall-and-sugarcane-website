@@ -1,0 +1,70 @@
+---
+import ContactForm from '../islands/ContactForm.jsx';
+import IconRenderer, { Icon } from '../utilities/IconRenderer.astro';
+
+interface ContactInfoItemProps {
+    icon: Icon;
+    title: string;
+    value: string;
+    href: string;
+}
+
+const iconClasses = "h-7 w-7 text-brand-green";
+
+const ContactInfoItem = ({ icon: iconName, title, value, href }: ContactInfoItemProps) => (
+    <a href={href} class="flex items-center space-x-4 group">
+        <div class="flex-shrink-0 text-brand-green group-hover:scale-110 transition-transform">
+            <IconRenderer icon={iconName} class={iconClasses} />
+        </div>
+        <div>
+            <p class="font-bold text-lg text-brand-text">{title}</p>
+            <p class="text-gray-600 group-hover:text-brand-green transition-colors">{value}</p>
+        </div>
+    </a>
+);
+---
+
+<section id="contacto" class="py-20 px-4 bg-white">
+    <div class="container mx-auto text-center">
+        <h3 class="text-brand-green font-semibold tracking-widest">CONTACTO</h3>
+        <h2 class="text-4xl font-serif font-bold mt-2 mb-6 text-brand-text">Hablemos</h2>
+        <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+            ¿Tienes alguna pregunta o deseas reservar tu visita? Completa el formulario y nos pondremos en contacto contigo.
+        </p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto text-left">
+            
+            {/* ------------------------------------------------------------- */}
+            {/* 1. La Isla de Preact: Componente ContactForm */}
+            {/* El cliente:load es necesario para activar el JS de Preact */}
+            <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                <ContactForm client:load /> 
+            </div>
+            {/* ------------------------------------------------------------- */}
+
+            {/* 2. Información Estática (Renderizada por Astro) */}
+            <div class="flex flex-col justify-center space-y-8">
+                <h3 class="text-3xl font-serif font-bold text-brand-text mb-4">Información de Contacto</h3>
+                
+                <ContactInfoItem 
+                    icon={Icon.Phone}
+                    title="Teléfono" 
+                    value="+593 987 654 321" 
+                    href="tel:+593987654321" 
+                />
+                <ContactInfoItem 
+                    icon={Icon.Whatsapp}
+                    title="WhatsApp" 
+                    value="Enviar un mensaje" 
+                    href="https://wa.me/593987654321" 
+                />
+                <ContactInfoItem 
+                    icon={Icon.Mail}
+                    title="Correo Electrónico" 
+                    value="contacto@paraisodelacana.com" 
+                    href="mailto:contacto@paraisodelacana.com" 
+                />
+            </div>
+        </div>
+    </div>
+</section>

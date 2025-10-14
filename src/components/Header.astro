@@ -1,0 +1,49 @@
+<!-- ---
+import HeaderMenu from "../islands/HeaderMenu";
+import SocialLinks from "./SocialLinks.astro";
+
+import IconRenderer, { Icon } from "../utilities/IconRenderer.astro";
+
+const navLinks = [
+  "Inicio",
+  "Nosotros",
+  "Ubicación",
+  "Atracciones",
+  "Eventos",
+  "Contacto",
+];
+
+// 1. Definimos las clases para los íconos
+const logoIconClasses = "h-8 w-8 text-brand-green";
+
+<header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <IconRenderer icon={Icon.Leaf} class={logoIconClasses} />
+      <span class="text-xl font-bold text-brand-text">Paraíso de la Caña</span>
+    </div>
+
+    <nav class="hidden lg:flex items-center space-x-8">
+      {
+        navLinks.map((link) => (
+          <a
+            href={`#${link.toLowerCase()}`}
+            class="text-gray-600 hover:text-brand-green transition-colors duration-300"
+          >
+            {link}
+          </a>
+        ))
+      }
+    </nav>
+
+    // <div class="hidden lg:flex items-center space-x-4">
+       // <SocialLinks></SocialLinks>
+    // </div>
+
+    <HeaderMenu
+      navLinks={navLinks}
+      socialLinksSlot={<SocialLinks />}
+      client:visible
+    />
+  </div>
+</header> -->

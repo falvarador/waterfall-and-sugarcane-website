@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  /* Extensión de Colores */
+  --color-brand-green: #5E9E68;
+  --color-brand-green-dark: #4a7c52;
+  --color-brand-bg: #F9F9F7;
+  --color-brand-text: #3C3C3B;
+  --color-brand-yellow: #FBBF24;
+
+  /* Extensión de Fuentes */
+  --font-family-sans: Montserrat, sans-serif;
+  --font-family-serif: 'Playfair Display', serif;
+}

@@ -1,0 +1,43 @@
+---
+import EventCard from "./EventCard.astro";
+
+const eventsData = [
+    {
+        image: "https://picsum.photos/600/400?image=103",
+        date: "Sábado, 25 de Diciembre, 2024 - 10:00 AM",
+        title: "Festival Anual de la Molienda",
+        description:
+            "Únete a la celebración más dulce del año. Disfruta de música folclórica en vivo, la molienda de caña en nuestro trapiche histórico, degustaciones gratuitas de jugo fresco y platos típicos de la región.",
+        buttonText: "Registrarse",
+        buttonStyle: "primary" as "primary",
+    },
+    {
+        image: "https://picsum.photos/600/400?image=1018",
+        date: "Miércoles, 15 de Enero, 2025 - 7:00 PM",
+        title: "Noche Mágica en la Cascada",
+        description:
+            "Vive una experiencia inolvidable bajo la luz de la luna llena. Caminata nocturna guiada hasta la cascada, cena especial con ingredientes locales y un concierto de guitarra acústica junto al río.",
+        buttonText: "Ver Más Detalles",
+        buttonStyle: "secondary" as "secondary",
+    },
+];
+---
+
+<section id="eventos" class="py-20 px-4 bg-white">
+    <div class="container mx-auto text-center">
+        <h3 class="text-brand-green font-semibold tracking-widest">
+            CALENDARIO
+        </h3>
+        <h2 class="text-4xl font-serif font-bold mt-2 mb-6 text-brand-text">
+            Eventos Especiales
+        </h2>
+        <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+            No te pierdas nuestras celebraciones únicas. Momentos especiales que
+            solo podrás vivir aquí, rodeado de naturaleza y tradición.
+        </p>
+
+        <div class="space-y-12">
+            {eventsData.map((item, index) => <EventCard {...item} />)}
+        </div>
+    </div>
+</section>
