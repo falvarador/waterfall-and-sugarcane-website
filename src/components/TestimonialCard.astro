@@ -2,39 +2,54 @@
 import StarRating from "./StarRating.astro";
 
 export interface Props {
-    quote: string;
-    name: string;
-    avatar: string;
-    initials: string;
+  quote: string;
+  name: string;
+  role?: string;
+  avatar?: string;
+  initials: string;
+  rating?: number;
 }
 
-const { quote, name, avatar, initials } = Astro.props;
+const { quote, name, role = "Visitante", avatar, initials, rating = 5 } = Astro.props;
 ---
 
-<div
-    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full"
+<article
+  class="bg-surface p-7 rounded-2xl border border-border shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-200 flex flex-col h-full service-card"
+  data-reveal
 >
-    <div class="text-4xl text-yellow-400 font-serif -ml-2 mb-4">”</div>
-    <p class="text-gray-600 mb-6 flex-grow">“{quote}”</p>
+  <!-- Comillas decorativas -->
+  <div class="text-4xl text-accent font-serif -ml-1 mb-3 leading-none" aria-hidden="true">&#8220;</div>
 
-    <div class="flex items-center mt-auto">
-        {
-            avatar ? (
-                <img
-                    src={avatar}
-                    alt={name}
-                    class="w-12 h-12 rounded-full mr-4 object-cover"
-                />
-            ) : (
-                <div class="w-12 h-12 rounded-full mr-4 bg-brand-green text-white flex items-center justify-center font-bold text-xl">
-                    {initials}
-                </div>
-            )
-        }
+  <!-- Cita -->
+  <blockquote class="text-text-muted text-[0.95rem] leading-relaxed mb-6 flex-grow italic">
+    {quote}
+  </blockquote>
 
-        <div>
-            <p class="font-bold text-brand-text">{name}</p>
-            <StarRating rating={5} />
+  <!-- Autor -->
+  <footer class="flex items-center gap-3 mt-auto">
+    {
+      avatar ? (
+        <img
+          src={avatar}
+          alt={`Foto de ${name}`}
+          class="w-11 h-11 rounded-full object-cover shrink-0"
+          loading="lazy"
+          width="44"
+          height="44"
+        />
+      ) : (
+        <div
+          class="w-11 h-11 rounded-full bg-primary text-white flex items-center justify-center font-bold text-base shrink-0"
+          aria-hidden="true"
+        >
+          {initials}
         </div>
+      )
+    }
+    <div>
+      <p class="font-semibold text-text text-sm">{name}</p>
+      <p class="text-text-muted text-xs">{role}</p>
+      <StarRating rating={rating} />
     </div>
-</div>
+  </footer>
+</article>

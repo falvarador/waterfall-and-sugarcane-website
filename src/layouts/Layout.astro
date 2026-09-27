@@ -1,23 +1,78 @@
 ---
 import "../styles/global.css";
+import WhatsAppFAB from "../components/WhatsAppFAB.astro";
+
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>Cascada y Caña — Turismo Natural en Costa Rica</title>
+    <meta
+      name="description"
+      content="Vive la dulzura de la naturaleza. Visita nuestra cascada, disfruta jugo de caña recién molido y descubre una experiencia de turismo rural única. Reserva tu visita hoy."
+    />
+    <meta property="og:title" content="Cascada y Caña — Turismo Natural" />
+    <meta
+      property="og:description"
+      content="Cascada, caña de azúcar y naturaleza pura. Una experiencia familiar inolvidable."
+    />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Fuentes: Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload fuente crítica serif (Playfair Display 700) -->
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQ.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Google Fonts stylesheet -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-bg text-text font-sans antialiased">
+    <slot />
+    <WhatsAppFAB whatsappNumber={whatsappNumber} />
+
+    <!-- Scroll-Reveal fallback para Firefox (IntersectionObserver) -->
+    <script>
+      if (
+        !CSS.supports(
+          "(animation-timeline: view()) and (animation-range: entry)"
+        )
+      ) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+
+        document.querySelectorAll("[data-reveal]").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+    </script>
+  </body>
 </html>

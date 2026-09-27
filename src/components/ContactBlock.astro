@@ -1,0 +1,229 @@
+---
+import IconRenderer, { Icon } from "../utilities/IconRenderer.astro";
+
+const formspreeUrl =
+  import.meta.env.PUBLIC_FORMSPREE_URL ?? "https://formspree.io/f/XXXXXXXX";
+const whatsappNumber =
+  import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
+const waMessage = encodeURIComponent(
+  "Hola, me gustaría reservar una visita a Cascada y Caña 🌿"
+);
+
+const iconClasses = "h-6 w-6 text-primary shrink-0";
+---
+
+<section id="contacto" class="py-20 px-4 bg-surface-raised">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-14" data-reveal>
+      <p class="text-primary font-semibold tracking-widest text-sm uppercase mb-2">
+        Contacto
+      </p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-text mb-4">
+        ¡Hablemos y reservemos tu visita!
+      </h2>
+      <p class="text-text-muted max-w-2xl mx-auto">
+        ¿Tienes alguna pregunta? Escríbenos y te respondemos en menos de 24
+        horas. También puedes contactarnos directamente por WhatsApp.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+
+      <!-- ── Columna izquierda: Formulario ── -->
+      <div class="bg-surface rounded-2xl border border-border p-8 shadow-sm" data-reveal>
+        <h3 class="font-serif text-xl font-bold text-text mb-6">
+          Envíanos un mensaje
+        </h3>
+        <form
+          action={formspreeUrl}
+          method="POST"
+          class="space-y-5"
+          novalidate
+        >
+          <!-- Nombre -->
+          <div>
+            <label
+              for="contact-name"
+              class="block text-sm font-medium text-text mb-1.5"
+            >
+              Nombre completo <span class="text-accent" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="contact-name"
+              name="name"
+              required
+              minlength="2"
+              autocomplete="name"
+              placeholder="Tu nombre"
+              class="w-full px-4 py-2.5 rounded-xl border border-border bg-bg text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors text-sm"
+            />
+          </div>
+
+          <!-- Teléfono -->
+          <div>
+            <label
+              for="contact-phone"
+              class="block text-sm font-medium text-text mb-1.5"
+            >
+              Teléfono <span class="text-accent" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="tel"
+              id="contact-phone"
+              name="phone"
+              required
+              autocomplete="tel"
+              placeholder="+506 8765 4321"
+              class="w-full px-4 py-2.5 rounded-xl border border-border bg-bg text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors text-sm"
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label
+              for="contact-email"
+              class="block text-sm font-medium text-text mb-1.5"
+            >
+              Correo electrónico
+            </label>
+            <input
+              type="email"
+              id="contact-email"
+              name="email"
+              autocomplete="email"
+              placeholder="tu@correo.com"
+              class="w-full px-4 py-2.5 rounded-xl border border-border bg-bg text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors text-sm"
+            />
+          </div>
+
+          <!-- Mensaje -->
+          <div>
+            <label
+              for="contact-message"
+              class="block text-sm font-medium text-text mb-1.5"
+            >
+              Mensaje o motivo de visita <span class="text-accent" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              required
+              minlength="10"
+              rows="4"
+              placeholder="¿Cuántas personas vendrán? ¿Tienen alguna necesidad especial?"
+              class="w-full px-4 py-2.5 rounded-xl border border-border bg-bg text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors text-sm resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.01] text-base"
+          >
+            Enviar mensaje
+          </button>
+
+          <p class="text-xs text-text-muted text-center">
+            <span aria-hidden="true">🔒</span> Tu información es privada y no será compartida.
+          </p>
+        </form>
+      </div>
+
+      <!-- ── Columna derecha: Info de contacto ── -->
+      <div class="flex flex-col justify-center gap-8" data-reveal>
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-text mb-6">
+            Información de contacto
+          </h3>
+          <ul class="space-y-5">
+            <!-- Teléfono -->
+            <li class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                <IconRenderer icon={Icon.Phone} class={iconClasses} />
+              </div>
+              <div>
+                <p class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5">Teléfono</p>
+                <a
+                  href={`tel:+${whatsappNumber}`}
+                  class="text-text font-semibold hover:text-primary transition-colors text-sm"
+                >
+                  +{whatsappNumber}
+                </a>
+              </div>
+            </li>
+
+            <!-- WhatsApp -->
+            <li class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center shrink-0">
+                <IconRenderer icon={Icon.Whatsapp} class="h-6 w-6 text-[#25D366] shrink-0" />
+              </div>
+              <div>
+                <p class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5">WhatsApp</p>
+                <a
+                  href={`https://wa.me/${whatsappNumber}?text=${waMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-text font-semibold hover:text-primary transition-colors text-sm"
+                >
+                  Enviar mensaje directo
+                </a>
+              </div>
+            </li>
+
+            <!-- Email -->
+            <li class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                <IconRenderer icon={Icon.Mail} class={iconClasses} />
+              </div>
+              <div>
+                <p class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5">Correo electrónico</p>
+                <a
+                  href="mailto:hola@cascadaycana.com"
+                  class="text-text font-semibold hover:text-primary transition-colors text-sm"
+                >
+                  hola@cascadaycana.com
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Horario de atención -->
+        <div class="bg-surface border border-border rounded-2xl p-6">
+          <h4 class="font-semibold text-text text-sm mb-3 flex items-center gap-2">
+            <IconRenderer icon={Icon.Calendar} class="h-4 w-4 text-primary" />
+            Horario de atención
+          </h4>
+          <ul class="space-y-1.5 text-sm text-text-muted">
+            <li class="flex justify-between">
+              <span>Lunes – Viernes</span>
+              <span class="font-medium text-text">8:00 – 17:00</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Sábados</span>
+              <span class="font-medium text-text">8:00 – 16:00</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Domingos</span>
+              <span class="font-medium text-text">9:00 – 15:00</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- WhatsApp CTA directo -->
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=${waMessage}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-[#25D366]/30 hover:scale-[1.01] text-base"
+        >
+          <IconRenderer icon={Icon.Whatsapp} class="h-5 w-5 text-white" />
+          Reservar ahora por WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

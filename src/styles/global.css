@@ -1,14 +1,122 @@
 @import "tailwindcss";
 
 @theme {
-  /* Extensión de Colores */
-  --color-brand-green: #5E9E68;
-  --color-brand-green-dark: #4a7c52;
-  --color-brand-bg: #F9F9F7;
-  --color-brand-text: #3C3C3B;
-  --color-brand-yellow: #FBBF24;
+  /* ── Fondos ── */
+  --color-bg:             #F9F9F7;   /* página principal */
+  --color-surface:        #FFFFFF;   /* tarjetas, formularios */
+  --color-surface-raised: #EEF7EF;   /* navbar sticky, hover cards */
 
-  /* Extensión de Fuentes */
-  --font-family-sans: Montserrat, sans-serif;
+  /* ── Marca ── */
+  --color-primary:        #3D7A47;   /* verde esmeralda profundo */
+  --color-primary-dark:   #2E5C34;   /* hover/active de primary */
+  --color-accent:         #F59E0B;   /* ámbar dorado — estrellas, badges */
+
+  /* ── Texto ── */
+  --color-text:           #1C2B1E;   /* texto principal */
+  --color-text-muted:     #5C6B5E;   /* subtítulos, metadatos */
+  --color-border:         #D4E4D6;   /* bordes sutiles */
+  --color-white:          #FFFFFF;
+
+  /* ── Tokens heredados (deprecados — se migran en tareas 10.3) ── */
+  --color-brand-green:      #5E9E68;
+  --color-brand-green-dark: #4a7c52;
+  --color-brand-bg:         #F9F9F7;
+  --color-brand-text:       #3C3C3B;
+  --color-brand-yellow:     #FBBF24;
+
+  /* ── Fuentes ── */
+  --font-family-sans:  Montserrat, sans-serif;
   --font-family-serif: 'Playfair Display', serif;
+}
+
+/* ─────────────────────────────────────────────
+   Scroll-Reveal: CSS nativo (Chrome 115+, Edge 115+, Safari 26+)
+───────────────────────────────────────────── */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
+  [data-reveal] {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      animation: none;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Scroll-Reveal: Fallback JS (Firefox)
+   La clase .is-visible es añadida por el IntersectionObserver en Layout.astro
+───────────────────────────────────────────── */
+@supports not ((animation-timeline: view()) and (animation-range: entry)) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────
+   ServiceCard hover — desactivar en reduced-motion
+───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .service-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   WhatsApp FAB — animación de entrada diferida
+───────────────────────────────────────────── */
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.whatsapp-fab {
+  animation: fab-in 0.4s ease forwards;
+  animation-delay: 2s;
+  opacity: 0; /* estado inicial antes del delay */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-fab {
+    animation: none;
+    opacity: 1;
+  }
 }

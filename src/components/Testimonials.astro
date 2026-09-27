@@ -2,50 +2,64 @@
 import TestimonialCard from "./TestimonialCard.astro";
 
 const testimonialsData = [
-    {
-        quote: "¡Una experiencia inolvidable! El jugo de caña era increíblemente fresco y delicioso, y la caminata a la cascada fue mágica. La atención de la familia fue muy cálida. ¡Volveremos!",
-        name: "Laura Campos",
-        avatar: "",
-        initials: "LC",
-    },
-    {
-        quote: "Un lugar perfecto para desconectar de la ciudad. El sonido de la cascada es muy relajante y el jugo de caña te recarga de energía. Se nota el amor que le ponen a este emprendimiento.",
-        name: "Carlos Mendoza",
-        avatar: "https://picsum.photos/100/100?random=1",
-        initials: "CM",
-    },
-    {
-        quote: "Es el mejor jugo de caña que he probado en mi vida. Ver cómo lo muelen al instante es un espectáculo. La cascada es impresionante. Un tesoro escondido que vale la pena visitar.",
-        name: "Ana Rodríguez",
-        avatar: "https://picsum.photos/100/100?random=2",
-        initials: "AR",
-    },
+  {
+    quote:
+      "¡Una experiencia inolvidable! El jugo de caña era increíblemente fresco y delicioso, y la caminata a la cascada fue mágica. La atención de la familia fue muy cálida. ¡Volveremos!",
+    name: "Laura Campos",
+    role: "San José, CR",
+    avatar: "",
+    initials: "LC",
+    rating: 5,
+  },
+  {
+    quote:
+      "Un lugar perfecto para desconectar de la ciudad. El sonido de la cascada es muy relajante y el jugo de caña te recarga de energía. Se nota el amor que le ponen a este emprendimiento.",
+    name: "Carlos Mendoza",
+    role: "Turista Nacional",
+    avatar: "https://picsum.photos/100/100?random=1",
+    initials: "CM",
+    rating: 5,
+  },
+  {
+    quote:
+      "Es el mejor jugo de caña que he probado en mi vida. Ver cómo lo muelen al instante es un espectáculo. La cascada es impresionante. Un tesoro escondido que vale la pena visitar.",
+    name: "Ana Rodríguez",
+    role: "Viajera frecuente",
+    avatar: "https://picsum.photos/100/100?random=2",
+    initials: "AR",
+    rating: 5,
+  },
 ];
 ---
 
-<section id="testimonios" class="py-20 px-4 bg-white">
-    <div class="container mx-auto text-center">
-        <h3 class="text-brand-green font-semibold tracking-widest">
-            TESTIMONIOS
-        </h3>
-        <h2 class="text-4xl font-serif font-bold mt-2 mb-6 text-brand-text">
-            Lo que Nuestros Visitantes Dicen
-        </h2>
-        <p class="max-w-3xl mx-auto text-gray-600 mb-12">
-            La experiencia de quienes nos visitan es nuestra mejor carta de
-            presentación. Sus palabras nos inspiran a seguir mejorando.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {
-                testimonialsData.map((item) => (
-                    <TestimonialCard
-                        quote={item.quote}
-                        name={item.name}
-                        avatar={item.avatar}
-                        initials={item.initials}
-                    />
-                ))
-            }
-        </div>
+<section id="testimonios" class="py-20 px-4 bg-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12" data-reveal>
+      <p class="text-primary font-semibold tracking-widest text-sm uppercase mb-2">
+        Testimonios
+      </p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-text mb-4">
+        Lo que dicen nuestros visitantes
+      </h2>
+      <p class="text-text-muted max-w-2xl mx-auto">
+        La experiencia de quienes nos visitan es nuestra mejor carta de
+        presentación. Sus palabras nos inspiran a seguir mejorando.
+      </p>
     </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        testimonialsData.map((item) => (
+          <TestimonialCard
+            quote={item.quote}
+            name={item.name}
+            role={item.role}
+            avatar={item.avatar}
+            initials={item.initials}
+            rating={item.rating}
+          />
+        ))
+      }
+    </div>
+  </div>
 </section>
