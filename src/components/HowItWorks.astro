@@ -1,0 +1,93 @@
+---
+import StepCard from "./StepCard.astro";
+import IconRenderer, { Icon } from "../utilities/IconRenderer.astro";
+
+interface Step {
+  icon: Icon;
+  title: string;
+  description: string;
+}
+
+const steps: Step[] = [
+  {
+    icon: Icon.Calendar,
+    title: "Reserva tu visita",
+    description:
+      "Contáctanos por WhatsApp o completa el formulario. Te confirmamos disponibilidad en menos de 24 horas.",
+  },
+  {
+    icon: Icon.Directions,
+    title: "Llega al paraíso",
+    description:
+      "Sigue las indicaciones que te enviamos. Estamos ubicados en plena naturaleza, a pocos kilómetros del centro.",
+  },
+  {
+    icon: Icon.Waterfall,
+    title: "Descubre y disfruta",
+    description:
+      "Explora la cascada, prueba el jugo de caña recién molido y recarga energías en un entorno natural único.",
+  },
+  {
+    icon: Icon.Family,
+    title: "Lleva el recuerdo",
+    description:
+      "Adquiere nuestros productos artesanales y comparte la experiencia. ¡Te esperamos de regreso pronto!",
+  },
+];
+
+const iconClasses = "h-7 w-7 text-primary/70";
+---
+
+<section id="como-funciona" class="py-20 px-4 bg-surface">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header de sección -->
+    <div class="text-center mb-16" data-reveal>
+      <p class="text-primary font-semibold tracking-widest text-sm uppercase mb-2">
+        El proceso
+      </p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-text mb-4">
+        ¿Cómo es tu visita?
+      </h2>
+      <p class="text-text-muted max-w-2xl mx-auto">
+        Visitar Cascada y Caña es simple y placentero. En cuatro pasos, vivirás
+        una experiencia que recordarás para siempre.
+      </p>
+    </div>
+
+    <!--
+      Layout: columna vertical en mobile/tablet, horizontal con conectores en desktop (lg+)
+      Los conectores entre pasos están en StepCard y son hidden en mobile
+    -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-4 relative">
+      {
+        steps.map((step, i) => (
+          <div
+            data-reveal
+            style={`animation-delay: ${i * 120}ms`}
+          >
+            <StepCard
+              step={i + 1}
+              title={step.title}
+              description={step.description}
+              isLast={i === steps.length - 1}
+            >
+              <div slot="icon">
+                <IconRenderer icon={step.icon} class={iconClasses} />
+              </div>
+            </StepCard>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- CTA al final del proceso -->
+    <div class="text-center mt-14" data-reveal>
+      <a
+        href="#contacto"
+        class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-8 py-3.5 rounded-full text-base transition-all duration-200 hover:shadow-lg hover:shadow-primary/30 hover:scale-[1.02]"
+      >
+        Reservar mi visita
+      </a>
+    </div>
+  </div>
+</section>

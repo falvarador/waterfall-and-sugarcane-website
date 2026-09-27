@@ -1,27 +1,122 @@
+---
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
+const waMessage = encodeURIComponent("Hola, quiero reservar una visita a Cascada y Caña 🌿");
+const waHref = `https://wa.me/${whatsappNumber}?text=${waMessage}`;
+---
+
 <section
-    id="inicio"
-    class="relative h-[85vh] bg-cover bg-center"
-    style={{
-        backgroundImage: `url('https://picsum.photos/1920/1080?image=1015')`,
-    }}
+  id="inicio"
+  class="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden flex items-center justify-center"
 >
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div
-        class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4"
+  <!-- Imagen LCP con <picture> + fetchpriority="high" (Design D2) -->
+  <picture class="absolute inset-0 w-full h-full">
+    <!-- En producción, reemplazar con imágenes reales del negocio en AVIF/WebP -->
+    <source
+      type="image/avif"
+      srcset="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&fm=avif&q=80"
+    />
+    <source
+      type="image/webp"
+      srcset="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&fm=webp&q=80"
+    />
+    <img
+      src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
+      alt="Cascada y naturaleza tropical — Paraíso de la Caña"
+      class="w-full h-full object-cover"
+      fetchpriority="high"
+      loading="eager"
+      width="1920"
+      height="1080"
+    />
+  </picture>
+
+  <!-- Overlay de legibilidad — bg-black/45 ≥ 4.5:1 ratio (Design D2) -->
+  <div class="absolute inset-0 bg-black/45" aria-hidden="true"></div>
+
+  <!-- Contenido del Hero -->
+  <div
+    class="relative z-10 flex flex-col items-center justify-center text-center text-white px-4 sm:px-6 max-w-4xl mx-auto"
+  >
+    <!-- Badge de categoría -->
+    <span
+      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-white/15 backdrop-blur-sm border border-white/25 mb-6"
     >
-        <h2 class="text-lg md:text-xl font-medium tracking-widest uppercase">
-            Paraíso de la Caña y La Cascada
-        </h2>
-        <h1
-            class="text-4xl md:text-6xl font-serif font-bold mt-4 mb-6 leading-tight"
-        >
-            Vive la dulzura de la naturaleza.
-        </h1>
-        <a
-            href="#contacto"
-            class="bg-brand-green hover:bg-brand-green-dark text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform transform hover:scale-105 duration-300"
-        >
-            Reserva tu visita
-        </a>
+      <span aria-hidden="true">🌿</span>
+      Turismo Rural · Costa Rica
+    </span>
+
+    <!-- Propuesta de valor — h1 -->
+    <h1
+      class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4"
+    >
+      Vive la dulzura<br class="hidden sm:block" /> de la naturaleza.
+    </h1>
+
+    <!-- Subtítulo -->
+    <p class="text-lg sm:text-xl text-white/85 max-w-xl mb-6">
+      Cascada, caña de azúcar y experiencias únicas en familia. Un paraíso
+      natural que te espera.
+    </p>
+
+    <!-- Prueba social inline -->
+    <div
+      class="flex items-center gap-2 text-sm text-white/90 mb-8 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20"
+    >
+      <span class="text-accent" aria-hidden="true">★★★★★</span>
+      <span class="font-semibold">4.9</span>
+      <span class="text-white/60">·</span>
+      <span>+500 visitantes felices</span>
     </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+      <!-- CTA primario: WhatsApp -->
+      <a
+        href={waHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold px-7 py-3.5 rounded-full text-base transition-all duration-200 hover:shadow-lg hover:shadow-[#25D366]/30 hover:scale-[1.02] min-h-[44px]"
+      >
+        <!-- WhatsApp icon inline -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-5 h-5 shrink-0"
+          aria-hidden="true"
+        >
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          ></path>
+        </svg>
+        Reservar por WhatsApp
+      </a>
+
+      <!-- CTA secundario: Formulario -->
+      <a
+        href="#contacto"
+        class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white font-semibold px-7 py-3.5 rounded-full text-base border border-white/40 backdrop-blur-sm transition-all duration-200 hover:scale-[1.02] min-h-[44px]"
+      >
+        Ver más información
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator decorativo -->
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/60 text-xs"
+    aria-hidden="true"
+  >
+    <span class="tracking-widest uppercase text-[10px]">Descubrir</span>
+    <svg
+      class="w-5 h-5 animate-bounce"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"
+      ></path>
+    </svg>
+  </div>
 </section>

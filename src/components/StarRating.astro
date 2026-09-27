@@ -8,12 +8,12 @@ export interface Props {
 const { rating } = Astro.props;
 ---
 
-<div class="flex space-x-1 text-brand-yellow">
+<div class="flex space-x-1 text-accent">
     {
         [...Array(5)].map((_, i) => (
             <IconRenderer
                 icon={Icon.Star}
-                class={`w-5 h-5 ${i < rating ? "text-brand-yellow" : "text-gray-300"}`}
+                class={`w-5 h-5 ${i < rating ? "text-accent" : "text-border"}`}
             />
         ))
     }

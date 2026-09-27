@@ -1,0 +1,56 @@
+---
+import StarRating from "./StarRating.astro";
+
+interface Metric {
+  value: string;
+  label: string;
+}
+
+const metrics: Metric[] = [
+  { value: "3+", label: "Generaciones cultivando la tierra" },
+  { value: "500+", label: "Familias que nos han visitado" },
+  { value: "4.9", label: "Calificación promedio" },
+];
+
+const rating = 5;
+const reviewCount = 87;
+---
+
+<section id="prueba-social" class="py-20 px-4 bg-surface-raised">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Sección superior: rating + headline -->
+    <div class="text-center mb-16" data-reveal>
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <StarRating rating={rating} />
+        <span class="font-bold text-text text-lg">{rating}</span>
+        <span class="text-text-muted text-sm">· {reviewCount} reseñas verificadas</span>
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-text mb-3">
+        Una experiencia que habla por sí sola
+      </h2>
+      <p class="text-text-muted max-w-xl mx-auto text-base">
+        Cada visitante lleva consigo un recuerdo único. Estas métricas son el reflejo de años de trabajo y pasión.
+      </p>
+    </div>
+
+    <!-- Grid de métricas -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
+      {
+        metrics.map((metric, i) => (
+          <div
+            class="text-center p-6 bg-surface rounded-2xl border border-border shadow-sm"
+            data-reveal
+            style={`animation-delay: ${i * 100}ms`}
+          >
+            <p class="font-serif text-4xl sm:text-5xl font-bold text-primary mb-2">
+              {metric.value}
+            </p>
+            <p class="text-text-muted text-sm leading-snug">{metric.label}</p>
+          </div>
+        ))
+      }
+    </div>
+
+  </div>
+</section>

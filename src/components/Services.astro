@@ -1,0 +1,90 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+import IconRenderer, { Icon } from "../utilities/IconRenderer.astro";
+
+interface ServiceItem {
+  icon: Icon;
+  title: string;
+  description: string;
+  price?: string;
+}
+
+const services: ServiceItem[] = [
+  {
+    icon: Icon.Waterfall,
+    title: "Visita a la Cascada",
+    description:
+      "Sumérgete en la magia de nuestra cascada natural. Un sendero guiado te lleva a través de exuberante vegetación hasta este tesoro escondido que te quitará el aliento.",
+    price: "Incluido en la visita",
+  },
+  {
+    icon: Icon.Tasting,
+    title: "Degustación de Jugo de Caña",
+    description:
+      "Disfruta el más puro y fresco jugo de caña, molido al momento frente a tus ojos. Sin aditivos, sin conservantes. Solo la dulzura auténtica de la naturaleza.",
+    price: "Incluido en la visita",
+  },
+  {
+    icon: Icon.Hiking,
+    title: "Caminata Guiada",
+    description:
+      "Explora los senderos naturales de nuestra finca con guías expertos. Aprende sobre las plantas, aves y ecosistemas que hacen de este lugar un paraíso único.",
+    price: "Incluido en la visita",
+  },
+  {
+    icon: Icon.Family,
+    title: "Experiencia Familiar",
+    description:
+      "Diseñamos cada visita pensando en toda la familia. Desde los más pequeños hasta los abuelos, todos encontrarán una actividad que los conecte con la naturaleza.",
+  },
+  {
+    icon: Icon.Recreation,
+    title: "Áreas de Recreación",
+    description:
+      "Espacios amplios y seguros para que los niños jueguen y los adultos descansen. Mesas de picnic, hamacas y zonas de descanso rodeadas de naturaleza.",
+  },
+  {
+    icon: Icon.Leaf,
+    title: "Productos de la Finca",
+    description:
+      "Lleva a casa lo auténtico: dulces de caña, meladura y productos artesanales elaborados con ingredientes de nuestra finca. El sabor de la tradición en tus manos.",
+  },
+];
+
+const iconClasses = "h-7 w-7 text-primary group-hover:text-primary transition-colors";
+---
+
+<section id="servicios" class="py-20 px-4 bg-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header de sección -->
+    <div class="text-center mb-14" data-reveal>
+      <p class="text-primary font-semibold tracking-widest text-sm uppercase mb-2">
+        Nuestras Experiencias
+      </p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-text mb-4">
+        Todo lo que te espera
+      </h2>
+      <p class="text-text-muted max-w-2xl mx-auto">
+        Cada visita es una aventura completa. Descubre la riqueza natural y
+        cultural que tenemos preparada para ti y tu familia.
+      </p>
+    </div>
+
+    <!-- Grid de servicios: 1 col mobile, 2 tablet, 3 desktop -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        services.map((service, i) => (
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            price={service.price}
+          >
+            <div slot="icon">
+              <IconRenderer icon={service.icon} class={iconClasses} />
+            </div>
+          </ServiceCard>
+        ))
+      }
+    </div>
+  </div>
+</section>
