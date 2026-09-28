@@ -1,12 +1,14 @@
 ---
 const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
-const waMessage = encodeURIComponent("Hola, quiero reservar una visita a Cascada y Caña 🌿");
+const waMessage = encodeURIComponent(
+  "Hola, quiero reservar una visita a Waterfall & Sugarcane El Flaco 🌿",
+);
 const waHref = `https://wa.me/${whatsappNumber}?text=${waMessage}`;
 ---
 
 <section
   id="inicio"
-  class="relative h-screen min-h-[600px] max-h-[900px] overflow-hidden flex items-center justify-center"
+  class="relative h-screen min-h-150 max-h-225 overflow-hidden flex items-center justify-center"
 >
   <!-- Imagen LCP con <picture> + fetchpriority="high" (Design D2) -->
   <picture class="absolute inset-0 w-full h-full">
@@ -20,8 +22,8 @@ const waHref = `https://wa.me/${whatsappNumber}?text=${waMessage}`;
       srcset="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&fm=webp&q=80"
     />
     <img
-      src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
-      alt="Cascada y naturaleza tropical — Paraíso de la Caña"
+      src="https://images.unsplash.com/photo-15069CR5301020000951231232805925346-21bda4d32df4?w=1920&q=80"
+      alt="Cascada y naturaleza tropical — Waterfall & Sugar canejuice El Flaco"
       class="w-full h-full object-cover"
       fetchpriority="high"
       loading="eager"

@@ -3,10 +3,9 @@ import IconRenderer, { Icon } from "../utilities/IconRenderer.astro";
 
 const formspreeUrl =
   import.meta.env.PUBLIC_FORMSPREE_URL ?? "https://formspree.io/f/XXXXXXXX";
-const whatsappNumber =
-  import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
 const waMessage = encodeURIComponent(
-  "Hola, me gustaría reservar una visita a Cascada y Caña 🌿"
+  "Hola, me gustaría reservar una visita a Waterfall & Sugarcane El Flaco 🌿",
 );
 
 const iconClasses = "h-6 w-6 text-primary shrink-0";
@@ -16,7 +15,9 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header -->
     <div class="text-center mb-14" data-reveal>
-      <p class="text-primary font-semibold tracking-widest text-sm uppercase mb-2">
+      <p
+        class="text-primary font-semibold tracking-widest text-sm uppercase mb-2"
+      >
         Contacto
       </p>
       <h2 class="font-serif text-3xl sm:text-4xl font-bold text-text mb-4">
@@ -29,25 +30,24 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-
       <!-- ── Columna izquierda: Formulario ── -->
-      <div class="bg-surface rounded-2xl border border-border p-8 shadow-sm" data-reveal>
+      <div
+        class="bg-surface rounded-2xl border border-border p-8 shadow-sm"
+        data-reveal
+      >
         <h3 class="font-serif text-xl font-bold text-text mb-6">
           Envíanos un mensaje
         </h3>
-        <form
-          action={formspreeUrl}
-          method="POST"
-          class="space-y-5"
-          novalidate
-        >
+        <form action={formspreeUrl} method="POST" class="space-y-5" novalidate>
           <!-- Nombre -->
           <div>
             <label
               for="contact-name"
               class="block text-sm font-medium text-text mb-1.5"
             >
-              Nombre completo <span class="text-accent" aria-hidden="true">*</span>
+              Nombre completo <span class="text-accent" aria-hidden="true"
+                >*</span
+              >
             </label>
             <input
               type="text"
@@ -104,7 +104,10 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
               for="contact-message"
               class="block text-sm font-medium text-text mb-1.5"
             >
-              Mensaje o motivo de visita <span class="text-accent" aria-hidden="true">*</span>
+              Mensaje o motivo de visita <span
+                class="text-accent"
+                aria-hidden="true">*</span
+              >
             </label>
             <textarea
               id="contact-message"
@@ -126,7 +129,8 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
           </button>
 
           <p class="text-xs text-text-muted text-center">
-            <span aria-hidden="true">🔒</span> Tu información es privada y no será compartida.
+            <span aria-hidden="true">🔒</span> Tu información es privada y no será
+            compartida.
           </p>
         </form>
       </div>
@@ -140,11 +144,17 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
           <ul class="space-y-5">
             <!-- Teléfono -->
             <li class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <div
+                class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0"
+              >
                 <IconRenderer icon={Icon.Phone} class={iconClasses} />
               </div>
               <div>
-                <p class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5">Teléfono</p>
+                <p
+                  class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5"
+                >
+                  Teléfono
+                </p>
                 <a
                   href={`tel:+${whatsappNumber}`}
                   class="text-text font-semibold hover:text-primary transition-colors text-sm"
@@ -156,11 +166,20 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
 
             <!-- WhatsApp -->
             <li class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center shrink-0">
-                <IconRenderer icon={Icon.Whatsapp} class="h-6 w-6 text-[#25D366] shrink-0" />
+              <div
+                class="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center shrink-0"
+              >
+                <IconRenderer
+                  icon={Icon.Whatsapp}
+                  class="h-6 w-6 text-[#25D366] shrink-0"
+                />
               </div>
               <div>
-                <p class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5">WhatsApp</p>
+                <p
+                  class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5"
+                >
+                  WhatsApp
+                </p>
                 <a
                   href={`https://wa.me/${whatsappNumber}?text=${waMessage}`}
                   target="_blank"
@@ -174,11 +193,17 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
 
             <!-- Email -->
             <li class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <div
+                class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0"
+              >
                 <IconRenderer icon={Icon.Mail} class={iconClasses} />
               </div>
               <div>
-                <p class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5">Correo electrónico</p>
+                <p
+                  class="text-xs text-text-muted font-medium uppercase tracking-wider mb-0.5"
+                >
+                  Correo electrónico
+                </p>
                 <a
                   href="mailto:hola@cascadaycana.com"
                   class="text-text font-semibold hover:text-primary transition-colors text-sm"
@@ -192,7 +217,9 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
 
         <!-- Horario de atención -->
         <div class="bg-surface border border-border rounded-2xl p-6">
-          <h4 class="font-semibold text-text text-sm mb-3 flex items-center gap-2">
+          <h4
+            class="font-semibold text-text text-sm mb-3 flex items-center gap-2"
+          >
             <IconRenderer icon={Icon.Calendar} class="h-4 w-4 text-primary" />
             Horario de atención
           </h4>
@@ -223,7 +250,6 @@ const iconClasses = "h-6 w-6 text-primary shrink-0";
           Reservar ahora por WhatsApp
         </a>
       </div>
-
     </div>
   </div>
 </section>
