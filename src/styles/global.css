@@ -30,6 +30,20 @@
 }
 
 /* ─────────────────────────────────────────────
+   Navegación y Scroll
+───────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Compensar el alto del header sticky (72px) + buffer (16px) */
+section[id], div[id] {
+  scroll-margin-top: 88px;
+}
+
+/* ─────────────────────────────────────────────
    Scroll-Reveal: CSS nativo (Chrome 115+, Edge 115+, Safari 26+)
 ───────────────────────────────────────────── */
 @keyframes reveal-up {

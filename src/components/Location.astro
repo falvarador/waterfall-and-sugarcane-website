@@ -1,7 +1,7 @@
 ---
 import LocationCard from "./LocationCard.astro";
 
-import IconRenderer, { Icon } from '../utilities/IconRenderer.astro';
+import IconRenderer, { Icon } from "../utilities/IconRenderer.astro";
 
 interface LocationDataItem {
     icon: Icon;
@@ -30,9 +30,7 @@ const data: LocationDataItem[] = [
 
 <section id="ubicación" class="py-20 px-4">
     <div class="container mx-auto text-center">
-        <h3 class="text-primary font-semibold tracking-widest">
-            ENCUÉNTRANOS
-        </h3>
+        <h3 class="text-primary font-semibold tracking-widest">ENCUÉNTRANOS</h3>
         <h2 class="text-4xl font-serif font-bold mt-2 mb-6 text-text">
             Visítanos en nuestro paraíso
         </h2>
@@ -41,11 +39,13 @@ const data: LocationDataItem[] = [
             llegar.
         </p>
 
-        <div
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.9523537899595!2d-85.59162978888938!3d10.020790690044398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f9fad17907dfdc3%3A0x839acbf1ac374feb!2sWaterfall%20y%20sugar%20cane%20juice%20%22El%20Flaco%22!5e0!3m2!1ses!2scr!4v1790615719828!5m2!1ses!2scr"
             class="w-full h-96 bg-gray-300 rounded-xl mb-12 shadow-md flex items-center justify-center"
-        >
-            <p class="text-gray-500">Mapa de Google Maps iría aquí</p>
-        </div>
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {
@@ -55,7 +55,7 @@ const data: LocationDataItem[] = [
                         description={item.description}
                     >
                         {/* 🌟 Usamos IconRenderer para inyectar el componente de Astro */}
-                        <div class="flex-shrink-0" slot="icon">
+                        <div class="shrink-0" slot="icon">
                             <IconRenderer
                                 icon={item.icon}
                                 class={item.iconClasses}

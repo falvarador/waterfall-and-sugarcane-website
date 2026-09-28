@@ -17,8 +17,9 @@ const logoIconClasses = "h-8 w-8 text-primary";
   id="site-header"
   class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-sm border-b border-transparent shadow-none"
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+  >
     <!-- Logo -->
     <a href="#inicio" class="flex items-center gap-2 shrink-0">
       <IconRenderer icon={Icon.Leaf} class={logoIconClasses} />
@@ -26,7 +27,10 @@ const logoIconClasses = "h-8 w-8 text-primary";
     </a>
 
     <!-- Nav desktop -->
-    <nav class="hidden lg:flex items-center gap-7" aria-label="Navegación principal">
+    <nav
+      class="hidden lg:flex items-center gap-7"
+      aria-label="Navegación principal"
+    >
       {
         navLinks.map((link) => (
           <a
@@ -66,7 +70,11 @@ const logoIconClasses = "h-8 w-8 text-primary";
           viewBox="0 0 24 24"
           data-icon-open
         >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
         <svg
           class="w-6 h-6 hidden"
@@ -75,7 +83,11 @@ const logoIconClasses = "h-8 w-8 text-primary";
           viewBox="0 0 24 24"
           data-icon-close
         >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
 
@@ -123,7 +135,12 @@ const logoIconClasses = "h-8 w-8 text-primary";
           header.classList.remove("bg-white/80");
           header.classList.add("bg-white/90", "shadow-sm", "border-border");
         } else {
-          header.classList.remove("scrolled", "shadow-sm", "border-border", "bg-white/90");
+          header.classList.remove(
+            "scrolled",
+            "shadow-sm",
+            "border-border",
+            "bg-white/90",
+          );
           header.classList.add("bg-white/80");
         }
       };
@@ -181,7 +198,10 @@ const logoIconClasses = "h-8 w-8 text-primary";
           this.mobileMenu.classList.toggle("flex", this.isMenuOpen);
           this.iconOpen?.classList.toggle("hidden", this.isMenuOpen);
           this.iconClose?.classList.toggle("hidden", !this.isMenuOpen);
-          this.menuButton?.setAttribute("aria-expanded", this.isMenuOpen.toString());
+          this.menuButton?.setAttribute(
+            "aria-expanded",
+            this.isMenuOpen.toString(),
+          );
         }
       }
 
