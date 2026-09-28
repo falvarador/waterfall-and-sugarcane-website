@@ -42,15 +42,17 @@ const iconClasses = "h-7 w-7 text-primary/70";
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header de sección -->
     <div class="text-center mb-16" data-reveal>
-      <p class="text-primary font-semibold tracking-widest text-sm uppercase mb-2">
+      <p
+        class="text-primary font-semibold tracking-widest text-sm uppercase mb-2"
+      >
         El proceso
       </p>
       <h2 class="font-serif text-3xl sm:text-4xl font-bold text-text mb-4">
         ¿Cómo es tu visita?
       </h2>
       <p class="text-text-muted max-w-2xl mx-auto">
-        Visitar Cascada y Caña es simple y placentero. En cuatro pasos, vivirás
-        una experiencia que recordarás para siempre.
+        Visitar Waterfall & Sugarcane El Flaco es simple y placentero. En cuatro
+        pasos, vivirás una experiencia que recordarás para siempre.
       </p>
     </div>
 
@@ -58,13 +60,12 @@ const iconClasses = "h-7 w-7 text-primary/70";
       Layout: columna vertical en mobile/tablet, horizontal con conectores en desktop (lg+)
       Los conectores entre pasos están en StepCard y son hidden en mobile
     -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-4 relative">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-4 relative"
+    >
       {
         steps.map((step, i) => (
-          <div
-            data-reveal
-            style={`animation-delay: ${i * 120}ms`}
-          >
+          <div data-reveal style={`animation-delay: ${i * 120}ms`}>
             <StepCard
               step={i + 1}
               title={step.title}

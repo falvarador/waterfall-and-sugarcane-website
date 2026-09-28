@@ -14,12 +14,17 @@ const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
     <meta name="generator" content={Astro.generator} />
 
     <!-- SEO -->
-    <title>Cascada y Caña — Turismo Natural en Costa Rica</title>
+    <title>
+      Waterfall & Sugarcane El Flaco — Turismo Natural en Costa Rica
+    </title>
     <meta
       name="description"
       content="Vive la dulzura de la naturaleza. Visita nuestra cascada, disfruta jugo de caña recién molido y descubre una experiencia de turismo rural única. Reserva tu visita hoy."
     />
-    <meta property="og:title" content="Cascada y Caña — Turismo Natural" />
+    <meta
+      property="og:title"
+      content="Waterfall & Sugarcane El Flaco — Turismo Natural"
+    />
     <meta
       property="og:description"
       content="Cascada, caña de azúcar y naturaleza pura. Una experiencia familiar inolvidable."
@@ -54,7 +59,7 @@ const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
     <script>
       if (
         !CSS.supports(
-          "(animation-timeline: view()) and (animation-range: entry)"
+          "(animation-timeline: view()) and (animation-range: entry)",
         )
       ) {
         const observer = new IntersectionObserver(
@@ -66,7 +71,7 @@ const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER ?? "50687654321";
               }
             });
           },
-          { threshold: 0.15 }
+          { threshold: 0.15 },
         );
 
         document.querySelectorAll("[data-reveal]").forEach((el) => {

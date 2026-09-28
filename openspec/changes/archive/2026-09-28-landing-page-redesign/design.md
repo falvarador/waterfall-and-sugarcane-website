@@ -83,7 +83,7 @@ Ver `proposal.md → Why` para la motivación completa.
   <source type="image/webp" srcset="hero.webp" />
   <img
     src="hero.jpg"
-    alt="Cascada y Caña — Vista panorámica"
+    alt="Waterfall & Sugarcane El Flaco — Vista panorámica"
     class="w-full h-full object-cover"
     fetchpriority="high"
     loading="eager"

@@ -2,7 +2,7 @@
 
 ## Why
 
-El sitio actual del emprendimiento turístico "Cascada y Caña" presenta una landing page genérica y plana que no comunica la identidad de marca, no genera confianza ni urgencia de visita, y carece de canales de conversión claros (WhatsApp, formulario, llamada). Se necesita un rediseño integral que transforme el sitio en una herramienta activa de captación de visitantes, alineada con estándares modernos de rendimiento (Core Web Vitals), accesibilidad y experiencia de usuario.
+El sitio actual del emprendimiento turístico "Waterfall & Sugarcane El Flaco" presenta una landing page genérica y plana que no comunica la identidad de marca, no genera confianza ni urgencia de visita, y carece de canales de conversión claros (WhatsApp, formulario, llamada). Se necesita un rediseño integral que transforme el sitio en una herramienta activa de captación de visitantes, alineada con estándares modernos de rendimiento (Core Web Vitals), accesibilidad y experiencia de usuario.
 
 ## What Changes
 
